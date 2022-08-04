@@ -3,8 +3,12 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="car" class="com.trutsyn.project.Car">
+    <bean id="vehicleBean" class="com.trutsyn.project.Car">
         <constructor-arg index="0" value="BMV"/>
         <constructor-arg index="1" value="Black"/>
+    </bean>
+
+    <bean id="sharing" class="com.trutsyn.project.Sharing">
+        <constructor-arg ref="vehicleBean"/>
     </bean>
 </beans>

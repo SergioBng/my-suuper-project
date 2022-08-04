@@ -9,9 +9,9 @@ public class TestBean {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        Car car = context.getBean("car", Car.class);
-
-        System.out.println(car.getModel());
+//        Vehicle vehicle = context.getBean("vehicleBean", Vehicle.class);
+        Sharing sharing = context.getBean("sharing", Sharing.class);
+        sharing.bookVehicle();
 
         context.close();
     }
