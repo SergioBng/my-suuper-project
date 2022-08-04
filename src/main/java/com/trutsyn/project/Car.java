@@ -1,16 +1,14 @@
 package com.trutsyn.project;
 
+import org.springframework.stereotype.Component;
+
 /**
  * @author Sergey Trutsyn 04.08.2022
  */
+@Component
 public class Car implements Vehicle {
     private String model;
     private String color;
-
-    public Car(String model, String color) {
-        this.model = model;
-        this.color = color;
-    }
 
     public String getModel() {
         return model;
