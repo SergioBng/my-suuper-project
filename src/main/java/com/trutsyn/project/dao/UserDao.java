@@ -16,9 +16,9 @@ public class UserDao {
 
     {
         users = new ArrayList<>();
-        users.add(new User(1, "Tom", "Odel"));
-        users.add(new User(2, "Sergey", "Trutsyn"));
-        users.add(new User(3, "Vania", "Mitiay"));
+        users.add(new User(++USER_COUNT, "Tom", "Odel"));
+        users.add(new User(++USER_COUNT, "Sergey", "Trutsyn"));
+        users.add(new User(++USER_COUNT, "Vania", "Mitiay"));
     }
 
     public List<User> getUsers() {
@@ -32,5 +32,15 @@ public class UserDao {
     public void save(User user) {
         user.setId(++USER_COUNT);
         users.add(user);
+    }
+
+    public void update(int id, User user) {
+        User userToUpdate = getUser(id);
+        userToUpdate.setName(user.getName());
+        userToUpdate.setSurname(user.getSurname());
+    }
+
+    public void delete(int id) {
+        users.removeIf(user -> user.getId() == id);
     }
 }
