@@ -2,9 +2,11 @@ package com.trutsyn.project.controller;
 
 import com.trutsyn.project.dao.UserDao;
 import com.trutsyn.project.models.User;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.jws.WebParam;
@@ -39,7 +41,10 @@ public class UserController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("user") User user) {
+    public String create(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "people/new";
+        }
         userDao.save(user);
         return "redirect:/users";
     }
@@ -51,7 +56,11 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user, @PathVariable("id") int id) {
+    public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
+                         @PathVariable("id") int id) {
+        if (bindingResult.hasErrors()) {
+            return "people/edit";
+        }
         userDao.update(id, user);
         return "redirect:/users";
     }
