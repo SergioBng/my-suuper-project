@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping("/carsharing")
-public class enterController {
+public class EnterController {
 
     @GetMapping("/enter")
     public String resolveEnter(@RequestParam(value = "name", required = false) String name,
